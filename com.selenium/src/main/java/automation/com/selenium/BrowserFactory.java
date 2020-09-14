@@ -26,7 +26,7 @@ public class BrowserFactory {
 	{
 		if(browser.equalsIgnoreCase("chrome"))
 		{
-				System.setProperty("webdriver.chrome.driver", "C:\\\\Users\\\\Ranjit\\\\Downloads\\\\chromedriver_win32\\\\chromedriver.exe");
+				System.setProperty("webdriver.chrome.driver", "C:\\Users\\Ranjit\\Downloads\\chromedriver_win32\\chromedriver.exe");
 				
 				DesiredCapabilities caps=new DesiredCapabilities();
 				caps.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);  //handle SSL certificates

@@ -13,7 +13,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<suiteXmlFile>C:\Users\Ranjit\eclipse-workspace\com.selenium\testng.xml</suiteXmlFile>
+		<suiteXmlFile>C:\Users\Ranjit\git\Framework\com.selenium\testng.xml</suiteXmlFile>
 	</properties>
 
 	<dependencies>

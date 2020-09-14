@@ -16,6 +16,7 @@ import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -31,12 +32,13 @@ public class LoginSample {
 	ExtentTest test;
 	ExtentReports rep;
 	
+	@Parameters({"user","pass"})
 	@Test
-	public void orangeDemoLogin() throws FileNotFoundException
+	public void orangeDemoLogin(String user, String pass) throws FileNotFoundException
 	{
 		driver = BrowserFactory.Browser("chrome", "https://opensource-demo.orangehrmlive.com/");
-		driver.findElement(By.id("txtUsername")).sendKeys("Admin");
-		driver.findElement(By.id("txtPassword")).sendKeys("admin123");
+		driver.findElement(By.id("txtUsername")).sendKeys(user);
+		driver.findElement(By.id("txtPassword")).sendKeys(pass);
 		driver.findElement(By.id("btnLogin")).click();
 		
 		Assert.assertEquals(true, false);
@@ -57,12 +59,8 @@ public class LoginSample {
 	{
 		if(result.getStatus()== result.FAILURE)
 		{
-			TakesScreenshot tScreenshot = (TakesScreenshot)driver;
-			File src = tScreenshot.getScreenshotAs(OutputType.FILE);
-			String path=System.getProperty("user.dir")+"/snapshots/"+System.currentTimeMillis()+".png";
-			File destination = new File(path);
-			FileHandler.copy(src, destination);
-			test.fail(result.getThrowable().getMessage(), MediaEntityBuilder.createScreenCaptureFromPath(path).build());
+	
+			test.fail("test failed");
 		}
 		rep.flush();
 		driver.quit();
